@@ -2,7 +2,15 @@
 @section('title','About')
 
 @section('content')
-    <div>
+        <div class="col-lg-12 margin-tb">
+            <div class="float-left">
+                <h2>Data Storage</h2>
+            </div>
+            <div class="float-right">
+                <a class="btn btn-success" href="{{ route('storage.create') }}"> Add Data</a>
+            </div>
+        </div>
+    <div class="row">
         @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
