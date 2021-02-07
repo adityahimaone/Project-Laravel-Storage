@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StorageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,5 +24,7 @@ Route::view('/about','main.v_about');
 Route::get('/admin_about',[AdminController::class,'about']);
 Route::get('/admin_about/{id}',[AdminController::class,'parsing']);
 Route::view('/admin','admin.v_index');
+
+Route::resource('storage',StorageController::class);
 //Route::view('/admin_about','admin.v_about');
 Route::view('/tempadmin','layout.v_template_admin');
