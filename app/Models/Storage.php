@@ -12,4 +12,5 @@ class Storage extends Model
     protected $fillable = [
         'id','NamaBarang','Keterangan','Jumlah'
     ];
+
 }

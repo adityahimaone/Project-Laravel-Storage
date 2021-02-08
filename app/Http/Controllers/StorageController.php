@@ -11,13 +11,13 @@ class StorageController extends Controller
     {
         $storages = Storage::latest()->paginate(5);
   
-        return view('admin.v_storage',compact('storages'))
+        return view('storage.v_storage',compact('storages'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
     {
-        return view('admin.v_storage');
+        return view('storage.v_create');
     }
 
     public function store(Request $request)
@@ -30,18 +30,14 @@ class StorageController extends Controller
         ]);
 
         Storage::create($request->all());
-        return redirect()->route('admin.v_storage')
-                        ->with('success','Post Created Success');
+        return redirect()->route('storage.index')
+                        ->with('success','Data Add Success');
     }
 
-  /*   public function show(Storage $storages)
-    {
-        return view('admin.storage',compact('storages'));
-    } */
 
     public function edit(Storage $storage)
     {
-        return view('admin.v_edit',compact('storage'));
+        return view('storage.v_edit',compact('storage'));
     }
 
     public function update(Request $request, Storage $storage)
@@ -55,16 +51,16 @@ class StorageController extends Controller
 
         $storage->update($request->all());
 
-        return redirect()->route('admin.v_storage')
-                        ->with('success','Post Update Success');
+        return redirect()->route('storage.index')
+                        ->with('success','Data Update Success');
     }
 
     public function destroy(Storage $storage)
     {
         $storage->delete();
   
-        return redirect()->route('admin.v_storage',compact('storage'))
-                        ->with('success','Post deleted successfully');
+        return redirect()->route('storage.index',compact('storage'))
+                        ->with('success','Data Deleted successfully');
     }
 }
 
