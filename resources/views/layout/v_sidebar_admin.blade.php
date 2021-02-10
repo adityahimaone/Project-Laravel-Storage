@@ -11,17 +11,23 @@
         </a>
       </li>
       <li class="nav-item">
+        <a href="/storage" class="nav-link {{request()->is('storage') ? 'active' : ''}}">
+          <i class="nav-icon fas fa-boxes"></i>
+          <p>Storage</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/warehouse" class="nav-link {{request()->is('warehouse') ? 'active' : ''}}">
+          <i class="nav-icon fas fa-warehouse"></i>
+          <p>Gudang</p>
+        </a>
+      </li>
+      <li class="nav-item">
         <a href="/admin_about" class="nav-link {{request()->is('admin_about') ? 'active' : ''}}">
           <i class="nav-icon fas fa-code"></i>
           <p>
             About
           </p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/storage" class="nav-link {{request()->is('storage') ? 'active' : ''}}">
-          <i class="nav-icon fas fa-boxes"></i>
-          <p>Storage</p>
         </a>
       </li>
       <li class="nav-item">

@@ -9,7 +9,7 @@
                 <h2>Add Data</h2>
             </div>
             <div class="float-right ms-4">
-                <a class="btn btn-secondary" href="{{ route('storage.index') }}"> Back</a>
+                <a class="btn btn-secondary" href="{{ route('warehouse.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
             @endif
         </div>
      </div>
-    <form action="{{ route('storage.store') }}" method="POST">
+    <form action="{{ route('warehouse.store') }}" method="POST">
         @csrf
       
        <div class="container">
@@ -47,28 +47,37 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Nama Barang:</strong>
-                            <input type="text" name="NamaBarang" class="form-control" placeholder="Nama Barang">
-                            @if ($errors->has('NamaBarang'))
-                            <span class="text-danger">{{ $errors->first('NamaBarang') }}</span>
+                            <strong>Nama Gudang:</strong>
+                            <input type="text" name="nama" class="form-control" placeholder="Nama Barang">
+                            @if ($errors->has('nama'))
+                            <span class="text-danger">{{ $errors->first('nama') }}</span>
+                        @endif
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Alamat:</strong>
+                            <input type="text" name="alamat" class="form-control" placeholder="Keterangan">
+                            @if ($errors->has('alamat'))
+                            <span class="text-danger">{{ $errors->first('alamat') }}</span>
+                        @endif
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Capacity:</strong>
+                            <input type="text" name="capacity" class="form-control" placeholder="Jumlah">
+                            @if ($errors->has('capacity'))
+                            <span class="text-danger">{{ $errors->first('capacity') }}</span>
                         @endif
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Keterangan:</strong>
-                            <input type="text" name="Keterangan" class="form-control" placeholder="Keterangan">
-                            @if ($errors->has('Keterangan'))
-                            <span class="text-danger">{{ $errors->first('Keterangan') }}</span>
-                        @endif
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Jumlah:</strong>
-                            <input type="text" name="Jumlah" class="form-control" placeholder="Jumlah">
-                            @if ($errors->has('Jumlah'))
-                            <span class="text-danger">{{ $errors->first('Jumlah') }}</span>
+                            <input type="text" name="keterangan" class="form-control" placeholder="Jumlah">
+                            @if ($errors->has('keterangan'))
+                            <span class="text-danger">{{ $errors->first('keterangan') }}</span>
                         @endif
                         </div>
                     </div>

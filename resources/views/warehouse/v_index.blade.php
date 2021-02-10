@@ -1,15 +1,15 @@
 @extends('layout.v_template_admin')
-@section('title','Storage Data')
+@section('title','Data Gudang')
 
 @section('content')
     <div class="container-fluid">
         <div class="row mx-4 pt-2">
             <div class="col-lg-12 margin-tb">
                 <div class="float-left">
-                    <h2>Data Storage</h2>
+                    <h2>Data Gudang</h2>
                 </div>
                 <div class="float-right">
-                    <a class="btn btn-success" href="{{ route('storage.create') }}"> Add Data</a>
+                    <a class="btn btn-success" href="{{ route('warehouse.create') }}"> Add Data</a>
                 </div>
             </div>
          </div>
@@ -28,24 +28,26 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
-                        <th>Nama Barang</th>
+                        <th>Nama Gudang</th>
+                        <th>Alamat</th>
+                        <th>Capacity</th>
                         <th>Keterangan</th>
-                        <th>Jumlah</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach ($storages as $data)
+                        @foreach ($warehouses as $data)
                         <tr>                    
                             <td class="text-center">{{ ++$i }}</td>
                             <td>{{ $data->id }}</td>
-                            <td>{{ $data->NamaBarang }}</td>
-                            <td>{{ $data->Keterangan }}</td>
-                            <td>{{ $data->Jumlah }}</td>
+                            <td>{{ $data->nama }}</td>
+                            <td>{{ $data->alamat }}</td>
+                            <td>{{ $data->capacity }}</td>   
+                            <td>{{ $data->keterangan }}</td>   
                             <td class="text-left">
-                                <form action="{{ route('storage.destroy',$data->id) }}" method="POST">
+                                <form action="{{ route('warehouse.destroy',$data->id) }}" method="POST">
         
-                                    <a class="btn btn-primary btn-sm" href="{{ route('storage.edit',$data->id) }}">Edit</a>
+                                    <a class="btn btn-primary btn-sm" href="{{ route('warehouse.edit',$data->id) }}">Edit</a>
         
                                     @csrf
                                     @method('DELETE')

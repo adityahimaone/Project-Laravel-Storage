@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Storage;
+use Validator;
 class StorageController extends Controller
 {
 
     public function index()
     {
-        $storages = Storage::latest()->paginate(5);
+        $storages = Storage::OrderBy('id')->paginate(5);
   
         return view('storage.v_storage',compact('storages'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -22,13 +23,32 @@ class StorageController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+   /*      $request->validate([
             'id'=> 'required',
             'NamaBarang'=> 'required',
             'Keterangan'=> 'required',
             'Jumlah'=> 'required',
-        ]);
+        ]); */
+        $rules = [
+          'id' => 'required|max:5|unique:storages',  
+          'NamaBarang' => 'required',  
+          'Keterangan' => 'required',  
+          'Jumlah' => 'required|numeric'
+        ];
 
+        $messages = [
+            'id.required' => 'ID Wajib diisi.',
+            'id.unique' => 'ID sudah terdaftar.',
+            'NamaBarang.required' => 'Nama Wajib diisi.',
+            'Keterangan.required' => 'Keterangan Wajib diisi.',
+            'Jumlah.required' => 'Jumlah Wajib diisi.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
         Storage::create($request->all());
         return redirect()->route('storage.index')
                         ->with('success','Data Add Success');
@@ -42,12 +62,31 @@ class StorageController extends Controller
 
     public function update(Request $request, Storage $storage)
     {
-        $request->validate([
+      /*   $request->validate([
             'id'=> 'required',
             'NamaBarang'=> 'required',
             'Keterangan'=> 'required',
             'Jumlah'=> 'required',
-        ]);
+        ]); */
+        $rules = [
+            'id' => 'required|max:5',  
+            'NamaBarang' => 'required',  
+            'Keterangan' => 'required',  
+            'Jumlah' => 'required|numeric'
+          ];
+  
+          $messages = [
+              'id.required' => 'ID Wajib diisi.',
+              'NamaBarang.required' => 'Nama Wajib diisi.',
+              'Keterangan.required' => 'Keterangan Wajib diisi.',
+              'Jumlah.required' => 'Jumlah Wajib diisi.',
+          ];
+        
+          $validator = Validator::make($request->all(), $rules, $messages);
+
+          if($validator->fails()){
+              return redirect()->back()->withErrors($validator)->withInput($request->all());
+          }
 
         $storage->update($request->all());
 
