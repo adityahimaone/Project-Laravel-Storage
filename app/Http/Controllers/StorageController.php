@@ -7,7 +7,11 @@ use App\Models\Storage;
 use Validator;
 class StorageController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $storages = Storage::OrderBy('id')->paginate(5);

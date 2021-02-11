@@ -139,6 +139,29 @@
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+                <h3 class="dropdown-item-title">
+                  Profile
+                </h3>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+              <h3 class="dropdown-item-title">
+                Seting
+              </h3>
+          </a>
+        <div class="dropdown-divider"></div>
+        <form class="dropdown-item" id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+          @csrf  
+          <button type="submit" class="btn btn-block">Log Out</button> 
+        </form>
+          
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -159,7 +182,7 @@
           <img src="{{ asset('assets/template/adminlte') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Aditya Himawan</a>
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 

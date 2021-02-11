@@ -31,3 +31,7 @@ Route::resource('storage',StorageController::class);
 Route::resource('warehouse',WarehouseController::class);
 //Route::view('/admin_about','admin.v_about');
 Route::view('/tempadmin','layout.v_template_admin');
+
+Auth::routes();
+
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('Admin');

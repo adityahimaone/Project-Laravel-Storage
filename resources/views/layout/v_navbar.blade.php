@@ -6,6 +6,6 @@
                 <li class="nav-item"><a class="nav-link {{request()->is('/') ? 'active' : ''}} " href="/" style="color: rgb(255,255,255);">Home</a></li>
                 <li class="nav-item"><a class="nav-link {{request()->is('article') ? 'active' : ''}} " href="/article" style="color: rgb(255,255,255);">Article</a></li>
                 <li class="nav-item"><a class="nav-link {{request()->is('about') ? 'active' : ''}} " href="/about" style="color: rgb(255,255,255);">About</a></li>
-            </ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="#" style="color: rgb(255,255,255);background: #3a0ca3;box-shadow: 0px 0px 6px 1px;">Login</a></span></div>
+            </ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="login" style="color: rgb(255,255,255);background: #3a0ca3;box-shadow: 0px 0px 6px 1px;">Login</a></span></div>
     </div>
 </nav>

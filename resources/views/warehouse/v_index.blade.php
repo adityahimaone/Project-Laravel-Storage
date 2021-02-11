@@ -46,7 +46,9 @@
                             <td>{{ $data->keterangan }}</td>   
                             <td class="text-left">
                                 <form action="{{ route('warehouse.destroy',$data->id) }}" method="POST">
-        
+                                    
+
+                                    <a class="btn btn-success btn-sm" href="{{ route('warehouse.show',$data->id) }}">Show</a>
                                     <a class="btn btn-primary btn-sm" href="{{ route('warehouse.edit',$data->id) }}">Edit</a>
         
                                     @csrf

@@ -8,11 +8,16 @@ use Validator;
 
 class WarehouseController extends Controller
 {
+  
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
+        
         $warehouses = Warehouse::latest()->paginate(5);
-
         return view('warehouse.v_index',compact('warehouses'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -57,7 +62,7 @@ class WarehouseController extends Controller
 
     public function show(Warehouse $warehouse)
     {
-        
+        return view('warehouse.v_show',compact('warehouse'));
     }
 
 
